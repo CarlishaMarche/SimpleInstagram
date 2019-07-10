@@ -16,7 +16,7 @@ import com.parse.SaveCallback;
 import java.io.File;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity {
+public class ComposeActivity extends AppCompatActivity {
 
     //TODO fix
     private static final String imagePath = "/Desktop/images.jpg";

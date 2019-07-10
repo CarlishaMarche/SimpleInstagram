@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.codepath.simpleinstagram.Post;
 import com.codepath.simpleinstagram.PostsAdapter;
@@ -24,12 +23,11 @@ import java.util.List;
 
 public class PostsFragment extends Fragment {
 
-    private final String TAG = "Post Fragment";
+    public final String TAG = "Post Fragment";
 
     private RecyclerView timeline;
-    private Button logOutBtn;
-    private PostsAdapter adapter;
-    private List<Post> mPosts;
+    protected PostsAdapter adapter;
+    protected List<Post> mPosts;
 
     @Nullable
     @Override
@@ -40,7 +38,6 @@ public class PostsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         timeline = view.findViewById(R.id.timeline);
-        logOutBtn = view.findViewById(R.id.logOutBtn);
 
 //        super.onViewCreated(view, savedInstanceState);
 
@@ -56,9 +53,11 @@ public class PostsFragment extends Fragment {
         queryPosts();
     }
 
-    private void queryPosts() {
+    protected void queryPosts() {
         ParseQuery<Post> postQuery = new ParseQuery<Post>(Post.class);
         postQuery.include(Post.KEY_USER);
+        postQuery.setLimit(20);
+        postQuery.addDescendingOrder(Post.KEY_CREATED_AT);
         postQuery.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> objects, ParseException e) {
