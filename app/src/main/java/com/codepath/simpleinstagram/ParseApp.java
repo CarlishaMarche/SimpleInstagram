@@ -13,6 +13,7 @@ public class ParseApp extends Application {
 
         //initialize parse
         ParseObject.registerSubclass(Post.class);
+
         final Parse.Configuration configuration = new Parse.Configuration.Builder(this)
                 .applicationId("cam-sim")
                 .clientKey("sloan-kettering")

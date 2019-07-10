@@ -26,7 +26,7 @@ public class TimelineActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                Fragment fragment = new ComposeFragment();
+                Fragment fragment = new PostsFragment();
                 //TODO correct fragments
                 switch (menuItem.getItemId()) {
                     case R.id.action_compose:
@@ -50,7 +50,7 @@ public class TimelineActivity extends AppCompatActivity {
                         fragment = new ComposeFragment();
                         break;
                     default:
-                        fragment = new ComposeFragment();
+                        fragment = new PostsFragment();
                         break;
                 }
 
