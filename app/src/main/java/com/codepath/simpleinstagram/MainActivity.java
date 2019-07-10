@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 //if there are no errors
                 if (e == null) {
                     Log.d("LoginActivity", "Login successful!");
-                    final Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    final Intent intent = new Intent(MainActivity.this, TimelineActivity.class);
                     startActivity(intent);
                     finish();
                 }
