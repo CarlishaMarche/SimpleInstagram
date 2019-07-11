@@ -2,6 +2,7 @@ package com.codepath.simpleinstagram;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
     private Context context;
     private List<Post> posts;
+    private SwipeRefreshLayout swipeContainer;
+
 
     public PostsAdapter(Context context, List<Post> posts) {
         this.context = context;
@@ -64,4 +67,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvDescription.setText(post.getDescription());
         }
     }
+
+
 }
