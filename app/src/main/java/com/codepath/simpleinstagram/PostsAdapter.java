@@ -1,6 +1,7 @@
 package com.codepath.simpleinstagram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -60,12 +61,26 @@ public class PostsAdapter extends  RecyclerView.Adapter<PostsAdapter.ViewHolder>
         private TextView tvHandle;
         private ImageView ivImage;
         private TextView tvDescription;
+        private String createdAt;
 
         public ViewHolder(View itemView) {
             super(itemView);
             tvHandle = itemView.findViewById(R.id.tvHandle);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    Post post = posts.get(position);
+                    String postId = post.getObjectId();
+                    Intent i = new Intent(v.getContext() ,DetailActivity.class);
+                    i.putExtra("postId", postId);
+
+                    v.getContext().startActivity(i);
+                }
+            });
         }
 
         public void bind(Post post) {
@@ -75,6 +90,7 @@ public class PostsAdapter extends  RecyclerView.Adapter<PostsAdapter.ViewHolder>
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
             tvDescription.setText(post.getDescription());
+            createdAt = post.getCreatedAt().toString();
         }
     }
 
