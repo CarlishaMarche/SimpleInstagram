@@ -61,7 +61,6 @@ public class PostsAdapter extends  RecyclerView.Adapter<PostsAdapter.ViewHolder>
         private TextView tvHandle;
         private ImageView ivImage;
         private TextView tvDescription;
-        private String createdAt;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -90,7 +89,6 @@ public class PostsAdapter extends  RecyclerView.Adapter<PostsAdapter.ViewHolder>
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
             tvDescription.setText(post.getDescription());
-            createdAt = post.getCreatedAt().toString();
         }
     }
 
