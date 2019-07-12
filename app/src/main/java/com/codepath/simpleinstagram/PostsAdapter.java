@@ -83,6 +83,14 @@ public class PostsAdapter extends  RecyclerView.Adapter<PostsAdapter.ViewHolder>
                     v.getContext().startActivity(i);
                 }
             });
+
+            profilePicture.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(v.getContext(), ProfileActivity.class);
+                    v.getContext().startActivity(i);
+                }
+            });
         }
 
         public void bind(Post post) {
