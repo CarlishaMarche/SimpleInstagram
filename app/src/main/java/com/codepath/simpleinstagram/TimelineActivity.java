@@ -7,19 +7,16 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.codepath.simpleinstagram.fragments.ComposeFragment;
 import com.codepath.simpleinstagram.fragments.PostsFragment;
 import com.codepath.simpleinstagram.fragments.ProfileFragment;
-import com.parse.ParseUser;
 
 public class TimelineActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
-    private Button logOutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,18 +24,7 @@ public class TimelineActivity extends AppCompatActivity {
         setContentView(R.layout.activity_timeline);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        logOutBtn = findViewById(R.id.logOutBtn);
 
-        logOutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ParseUser.logOut();
-//                ParseUser currentUser = ParseUser.getCurrentUser();
-                Intent i = new Intent(TimelineActivity.this, LogInActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
 
@@ -82,4 +68,19 @@ public class TimelineActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId((R.id.action_home));
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //only the profile image can be clicked, so I will skip writing switch statement
+        Intent i = new Intent(TimelineActivity.this, ProfileActivity.class);
+        startActivity(i);
+        finish();
+        return true;
+    }
 }

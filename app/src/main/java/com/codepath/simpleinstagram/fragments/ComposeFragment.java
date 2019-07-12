@@ -36,9 +36,8 @@ import static android.app.Activity.RESULT_OK;
 
 public class ComposeFragment extends Fragment {
 
-    private final String TAG = "ComposeFragment";
-    //TODO fix
-    private static final String imagePath = "/Desktop/images.jpg";
+//    private final String TAG = "ComposeFragment";
+//    private static final String imagePath = "/Desktop/images.jpg";
     public final String APP_TAG = "MyCustomApp";
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
     public String photoFileName = "photo.jpg";
@@ -167,7 +166,7 @@ public class ComposeFragment extends Fragment {
         }
     }
 
-    // Returns the File for a photo stored on disk given the fileName
+    /* Returns the File for a photo stored on disk given the fileName */
     public File getPhotoFileUri(String fileName) {
         // Get safe storage directory for photos
         // Use `getExternalFilesDir` on Context to access package-specific directories.
