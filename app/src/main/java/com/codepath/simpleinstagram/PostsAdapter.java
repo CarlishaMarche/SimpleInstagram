@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
+import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -61,12 +62,14 @@ public class PostsAdapter extends  RecyclerView.Adapter<PostsAdapter.ViewHolder>
         private TextView tvHandle;
         private ImageView ivImage;
         private TextView tvDescription;
+        private ImageView profilePicture;
 
         public ViewHolder(View itemView) {
             super(itemView);
             tvHandle = itemView.findViewById(R.id.tvHandle);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+            profilePicture = itemView.findViewById(R.id.profilePicPostView);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -84,6 +87,10 @@ public class PostsAdapter extends  RecyclerView.Adapter<PostsAdapter.ViewHolder>
 
         public void bind(Post post) {
             tvHandle.setText(post.getUser().getUsername());
+            ParseFile proPic = ParseUser.getCurrentUser().getParseFile("profilePicture");
+            if(proPic != null) {
+                Glide.with(context).load(proPic.getUrl()).into(profilePicture);
+            }
             ParseFile image = post.getImage();
             if (image != null ){
                 Glide.with(context).load(image.getUrl()).into(ivImage);
