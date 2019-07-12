@@ -44,7 +44,6 @@ public class TimelineActivity extends AppCompatActivity {
                         break;
                     case R.id.action_notifications:
                         // do something here
-                        fragment = new ComposeFragment();
                         break;
                     case R.id.action_profile:
                         //do something here
@@ -52,7 +51,6 @@ public class TimelineActivity extends AppCompatActivity {
                         break;
                     case R.id.action_search:
                         //do something here
-                        fragment = new ComposeFragment();
                         break;
                     default:
                         fragment = new PostsFragment();
